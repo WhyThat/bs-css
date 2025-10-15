@@ -1371,7 +1371,6 @@ let selection: list<rule> => rule
 /**
  Combinators selectors
  */
-
 /**
  The > combinator selects nodes that are direct children of the first element.
  */
@@ -1646,11 +1645,15 @@ let fillBox: [> Types.GeometryBox.t]
 let strokeBox: [> Types.GeometryBox.t]
 let viewBox: [> Types.GeometryBox.t]
 
-let translate: (Types.Length.t, Types.Length.t) => [> Types.Transform.t]
-let translate3d: (Types.Length.t, Types.Length.t, Types.Length.t) => [> Types.Transform.t]
-let translateX: Types.Length.t => [> Types.Transform.t]
-let translateY: Types.Length.t => [> Types.Transform.t]
-let translateZ: Types.Length.t => [> Types.Transform.t]
+let translate: (Types.PercentageLengthCalc.t, Types.PercentageLengthCalc.t) => [> Types.Transform.t]
+let translate3d: (
+  Types.PercentageLengthCalc.t,
+  Types.PercentageLengthCalc.t,
+  Types.Length.t,
+) => [> Types.Transform.t]
+let translateX: Types.PercentageLengthCalc.t => [> Types.Transform.t]
+let translateY: Types.PercentageLengthCalc.t => [> Types.Transform.t]
+let translateZ: Types.PercentageLengthCalc.t => [> Types.Transform.t]
 let scale: (float, float) => [> Types.Transform.t]
 let scale3d: (float, float, float) => [> Types.Transform.t]
 let scaleX: float => [> Types.Transform.t]
@@ -1815,7 +1818,6 @@ let fontFace: (
 /**
  * Transition
  */
-
 module Transition: {
   type t = [#value(string)]
 
@@ -1843,7 +1845,6 @@ let transitions: list<[Transition.t]> => rule
 /**
  * Animation
  */
-
 module Animation: {
   type t = [#value(string)]
 
@@ -1918,7 +1919,6 @@ let animationTimingFunction: Types.TimingFunction.t => rule
 /**
  SVG
  *** */
-
 module SVG: {
   let fill: [< Types.SVG.Fill.t | Types.Color.t | Types.Var.t | Types.Url.t] => rule
   let fillRule: [#nonzero | #evenodd] => rule

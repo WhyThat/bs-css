@@ -1992,7 +1992,6 @@ let animationName = x => D("animationName", x)
 /**
  * SVG
  */
-
 module SVG = {
   let fill = x => D(
     "fill",

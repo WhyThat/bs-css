@@ -433,11 +433,11 @@ module FontWeight: {
 
 module Transform: {
   type t = [
-    | #translate(Length.t, Length.t)
-    | #translate3d(Length.t, Length.t, Length.t)
-    | #translateX(Length.t)
-    | #translateY(Length.t)
-    | #translateZ(Length.t)
+    | #translate(PercentageLengthCalc.t, PercentageLengthCalc.t)
+    | #translate3d(PercentageLengthCalc.t, PercentageLengthCalc.t, Length.t)
+    | #translateX(PercentageLengthCalc.t)
+    | #translateY(PercentageLengthCalc.t)
+    | #translateZ(PercentageLengthCalc.t)
     | #scale(float, float)
     | #scale3d(float, float, float)
     | #scaleX(float)
@@ -454,11 +454,11 @@ module Transform: {
     | #perspective(int)
   ]
 
-  let translate: (Length.t, Length.t) => [> #translate(Length.t, Length.t)]
-  let translate3d: (Length.t, Length.t, Length.t) => [> #translate3d(Length.t, Length.t, Length.t)]
-  let translateX: Length.t => [> t]
-  let translateY: Length.t => [> t]
-  let translateZ: Length.t => [> t]
+  let translate: (PercentageLengthCalc.t, PercentageLengthCalc.t) => [> t]
+  let translate3d: (PercentageLengthCalc.t, PercentageLengthCalc.t, Length.t) => [> t]
+  let translateX: PercentageLengthCalc.t => [> t]
+  let translateY: PercentageLengthCalc.t => [> t]
+  let translateZ: PercentageLengthCalc.t => [> t]
   let scale: (float, float) => [> t]
   let scale3d: (float, float, float) => [> t]
   let scaleX: float => [> t]

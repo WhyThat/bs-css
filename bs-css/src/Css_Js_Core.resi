@@ -303,15 +303,15 @@ let borderRightStyle: [< Types.BorderStyle.t | Types.Var.t | Types.Cascading.t] 
 
 let borderRightWidth: Types.Length.t => rule
 
-let borderRadius: Types.Length.t => rule
+let borderRadius: Types.PercentageLengthCalc.t => rule
 let borderRadius4: (
-  ~topLeft: Types.Length.t,
-  ~topRight: Types.Length.t,
-  ~bottomLeft: Types.Length.t,
-  ~bottomRight: Types.Length.t,
+  ~topLeft: Types.PercentageLengthCalc.t,
+  ~topRight: Types.PercentageLengthCalc.t,
+  ~bottomLeft: Types.PercentageLengthCalc.t,
+  ~bottomRight: Types.PercentageLengthCalc.t,
 ) => rule
 
-let borderSpacing: Types.Length.t => rule
+let borderSpacing: Types.PercentageLengthCalc.t => rule
 
 /**
  The border-style shorthand CSS property sets the line style for all four sides of an element's border.
@@ -320,15 +320,15 @@ let borderStyle: [< Types.BorderStyle.t | Types.Var.t | Types.Cascading.t] => ru
 
 let borderTopColor: [< Types.Color.t | Types.Var.t] => rule
 
-let borderTopLeftRadius: Types.Length.t => rule
+let borderTopLeftRadius: Types.PercentageLengthCalc.t => rule
 
-let borderTopRightRadius: Types.Length.t => rule
+let borderTopRightRadius: Types.PercentageLengthCalc.t => rule
 
 let borderTopStyle: [< Types.BorderStyle.t | Types.Var.t | Types.Cascading.t] => rule
 
-let borderTopWidth: Types.Length.t => rule
+let borderTopWidth: Types.PercentageLengthCalc.t => rule
 
-let borderWidth: Types.Length.t => rule
+let borderWidth: Types.PercentageLengthCalc.t => rule
 
 let bottom: [< #auto | Types.PercentageLengthCalc.t | Types.Var.t | Types.Cascading.t] => rule
 
@@ -1385,7 +1385,6 @@ let selection: array<rule> => rule
 /**
  Combinators selectors
  */
-
 /**
  The > combinator selects nodes that are direct children of the first element.
  */
@@ -1660,11 +1659,15 @@ let fillBox: [> Types.GeometryBox.t]
 let strokeBox: [> Types.GeometryBox.t]
 let viewBox: [> Types.GeometryBox.t]
 
-let translate: (Types.Length.t, Types.Length.t) => [> Types.Transform.t]
-let translate3d: (Types.Length.t, Types.Length.t, Types.Length.t) => [> Types.Transform.t]
-let translateX: Types.Length.t => [> Types.Transform.t]
-let translateY: Types.Length.t => [> Types.Transform.t]
-let translateZ: Types.Length.t => [> Types.Transform.t]
+let translate: (Types.PercentageLengthCalc.t, Types.PercentageLengthCalc.t) => [> Types.Transform.t]
+let translate3d: (
+  Types.PercentageLengthCalc.t,
+  Types.PercentageLengthCalc.t,
+  Types.Length.t,
+) => [> Types.Transform.t]
+let translateX: Types.PercentageLengthCalc.t => [> Types.Transform.t]
+let translateY: Types.PercentageLengthCalc.t => [> Types.Transform.t]
+let translateZ: Types.PercentageLengthCalc.t => [> Types.Transform.t]
 let scale: (float, float) => [> Types.Transform.t]
 let scale3d: (float, float, float) => [> Types.Transform.t]
 let scaleX: float => [> Types.Transform.t]
@@ -1829,7 +1832,6 @@ let fontFace: (
 /**
  * Transition
  */
-
 module Transition: {
   type t = [#value(string)]
 
@@ -1857,7 +1859,6 @@ let transitions: array<[Transition.t]> => rule
 /**
  * Animation
  */
-
 module Animation: {
   type t = [#value(string)]
 

@@ -607,11 +607,11 @@ module FontWeight = {
 
 module Transform = {
   type t = [
-    | #translate(Length.t, Length.t)
-    | #translate3d(Length.t, Length.t, Length.t)
-    | #translateX(Length.t)
-    | #translateY(Length.t)
-    | #translateZ(Length.t)
+    | #translate(PercentageLengthCalc.t, PercentageLengthCalc.t)
+    | #translate3d(PercentageLengthCalc.t, PercentageLengthCalc.t, Length.t)
+    | #translateX(PercentageLengthCalc.t)
+    | #translateY(PercentageLengthCalc.t)
+    | #translateZ(PercentageLengthCalc.t)
     | #scale(float, float)
     | #scale3d(float, float, float)
     | #scaleX(float)
@@ -652,19 +652,23 @@ module Transform = {
 
   let string_of_translate3d = (x, y, z) =>
     "translate3d(" ++
-    Length.toString(x) ++
+    PercentageLengthCalc.toString(x) ++
     ", " ++
-    Length.toString(y) ++
+    PercentageLengthCalc.toString(y) ++
     ", " ++
     Length.toString(z) ++ ")"
 
   let toString = x =>
     switch x {
-    | #translate(x, y) => "translate(" ++ Length.toString(x) ++ ", " ++ Length.toString(y) ++ ")"
+    | #translate(x, y) =>
+      "translate(" ++
+      PercentageLengthCalc.toString(x) ++
+      ", " ++
+      PercentageLengthCalc.toString(y) ++ ")"
     | #translate3d(x, y, z) => string_of_translate3d(x, y, z)
-    | #translateX(x) => "translateX(" ++ Length.toString(x) ++ ")"
-    | #translateY(y) => "translateY(" ++ Length.toString(y) ++ ")"
-    | #translateZ(z) => "translateZ(" ++ Length.toString(z) ++ ")"
+    | #translateX(x) => "translateX(" ++ PercentageLengthCalc.toString(x) ++ ")"
+    | #translateY(y) => "translateY(" ++ PercentageLengthCalc.toString(y) ++ ")"
+    | #translateZ(z) => "translateZ(" ++ PercentageLengthCalc.toString(z) ++ ")"
     | #scale(x, y) => string_of_scale(x, y)
     | #scale3d(x, y, z) =>
       "scale3d(" ++

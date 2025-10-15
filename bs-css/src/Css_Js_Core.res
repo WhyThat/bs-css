@@ -363,16 +363,18 @@ let borderLeftColor = x => D("borderLeftColor", string_of_color(x))
 
 let borderLeftWidth = x => D("borderLeftWidth", Length.toString(x))
 
-let borderSpacing = x => D("borderSpacing", Length.toString(x))
+let borderSpacing = x => D("borderSpacing", PercentageLengthCalc.toString(x))
 
-let borderRadius = x => D("borderRadius", Length.toString(x))
+let borderRadius = x => D("borderRadius", PercentageLengthCalc.toString(x))
 let borderRadius4 = (~topLeft, ~topRight, ~bottomLeft, ~bottomRight) => D(
   "borderRadius",
-  Length.toString(topLeft) ++
+  PercentageLengthCalc.toString(topLeft) ++
   (" " ++
-  (Length.toString(topRight) ++
+  (PercentageLengthCalc.toString(topRight) ++
   (" " ++
-  (Length.toString(bottomLeft) ++ (" " ++ Length.toString(bottomRight)))))),
+  (PercentageLengthCalc.toString(bottomLeft) ++
+  (" " ++
+  PercentageLengthCalc.toString(bottomRight)))))),
 )
 
 let borderRightColor = x => D("borderRightColor", string_of_color(x))
@@ -381,13 +383,13 @@ let borderRightWidth = x => D("borderRightWidth", Length.toString(x))
 
 let borderTopColor = x => D("borderTopColor", string_of_color(x))
 
-let borderTopLeftRadius = x => D("borderTopLeftRadius", Length.toString(x))
+let borderTopLeftRadius = x => D("borderTopLeftRadius", PercentageLengthCalc.toString(x))
 
-let borderTopRightRadius = x => D("borderTopRightRadius", Length.toString(x))
+let borderTopRightRadius = x => D("borderTopRightRadius", PercentageLengthCalc.toString(x))
 
-let borderTopWidth = x => D("borderTopWidth", Length.toString(x))
+let borderTopWidth = x => D("borderTopWidth", PercentageLengthCalc.toString(x))
 
-let borderWidth = x => D("borderWidth", Length.toString(x))
+let borderWidth = x => D("borderWidth", PercentageLengthCalc.toString(x))
 
 let bottom = x => D("bottom", string_of_position(x))
 
@@ -1994,7 +1996,6 @@ let animationName = x => D("animationName", x)
 /**
  * SVG
  */
-
 module SVG = {
   let fill = x => D(
     "fill",
